@@ -1,0 +1,9 @@
+version: '2.2'
+
+services:
+  jmusicbot:
+    image: jmusicbot:latest
+    container_name: JMusicBot
+    restart: always
+    volumes:
+     - ./config:/cfg
