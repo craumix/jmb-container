@@ -3,3 +3,5 @@ A containerized version of the [JMusicBot by jagrosh](https://github.com/jagrosh
 
 It uses the [java:8 Baseimage](https://hub.docker.com/_/openjdk), the image has a volume on **/cfg**.
 The compose file uses **./config:/cfg**.
+
+# Dockerhub: [here](https://hub.docker.com/r/craumix/jmusicbot)
