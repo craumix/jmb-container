@@ -3,7 +3,11 @@ version: '2.2'
 services:
   jmusicbot:
     image: jmusicbot:latest
-    container_name: JMusicBot
-    restart: always
+    container_name: jmb
+    restart: unless-stopped
     volumes:
-     - ./config:/cfg
+     - jmb:/home/appuser
+     - ./config:/home/appuser/config
+
+volumes:
+  jmb:

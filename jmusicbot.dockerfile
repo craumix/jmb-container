@@ -1,10 +1,17 @@
-FROM java:8
+FROM ubuntu:19.04
 
-WORKDIR /
+ENV JMB_VERSION 0.2.2
 
-ADD https://github.com/jagrosh/MusicBot/releases/download/0.2.2/JMusicBot-0.2.2-Linux.jar JMusicBot.jar
-ADD https://github.com/jagrosh/MusicBot/releases/download/0.2.2/config.txt cfg/config.txt
+RUN apt-get update && apt-get install -y \
+    openjdk-8-jre-headless
 
-VOLUME /cfg
+RUN useradd --create-home appuser
+WORKDIR /home/appuser
+USER appuser
 
-CMD cd /cfg && java -jar -Dnogui=true /JMusicBot.jar
+ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/JMusicBot-$JMB_VERSION-Linux.jar ./JMusicBot.jar
+ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/config.txt ./config/config.txt
+
+VOLUME /home/appuser/config
+
+CMD cd ./config && java -jar -Dnogui=true ./JMusicBot.jar
