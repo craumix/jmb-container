@@ -12,6 +12,6 @@ RUN apt-get update && \
 ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/JMusicBot-$JMB_VERSION-Linux.jar /jmb/JMusicBot.jar
 ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/config.txt /jmb/config/config.txt
 
-VOLUME /jmb/config
+VOLUME /jmb
 
 CMD cd /jmb/config && java -jar -Dnogui=true /jmb/JMusicBot.jar
