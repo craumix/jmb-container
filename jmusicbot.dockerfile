@@ -17,4 +17,4 @@ ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/config.tx
 
 VOLUME /home/appuser/config
 
-CMD cd ./config && java -jar -Dnogui=true ./JMusicBot.jar
+CMD cd /home/appuser/config && java -jar -Dnogui=true /home/appuser/JMusicBot.jar
