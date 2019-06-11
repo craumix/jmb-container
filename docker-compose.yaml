@@ -6,8 +6,8 @@ services:
     container_name: jmb
     restart: unless-stopped
     volumes:
-     - jmb:/home/appuser
-     - ./config:/home/appuser/config
+     - jmb:/jmb
+     - ./config:/jmb/config
 
 volumes:
   jmb:

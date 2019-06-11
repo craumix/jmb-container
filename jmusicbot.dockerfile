@@ -7,14 +7,11 @@ RUN apt-get update && \
     openjdk-8-jre-headless && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    useradd --create-home appuser
+    mkdir /jmb
 
-WORKDIR /home/appuser
-USER appuser
+ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/JMusicBot-$JMB_VERSION-Linux.jar /jmb/JMusicBot.jar
+ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/config.txt /jmb/config/config.txt
 
-ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/JMusicBot-$JMB_VERSION-Linux.jar ./JMusicBot.jar
-ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/config.txt ./config/config.txt
+VOLUME /jmb/config
 
-VOLUME /home/appuser/config
-
-CMD cd /home/appuser/config && java -jar -Dnogui=true /home/appuser/JMusicBot.jar
+CMD cd /jmb/config && java -jar -Dnogui=true /jmb/JMusicBot.jar
