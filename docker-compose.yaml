@@ -2,7 +2,7 @@ version: '2.2'
 
 services:
   jmusicbot:
-    image: jmusicbot:latest
+    image: craumix/jmusicbot:latest
     container_name: jmb
     restart: unless-stopped
     volumes:
