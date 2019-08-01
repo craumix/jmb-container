@@ -6,7 +6,4 @@ services:
     container_name: jmb
     restart: unless-stopped
     volumes:
-     - data:/jmb/config
-
-volumes:
-  data:
+     - ./config:/jmb/config
