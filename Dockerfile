@@ -1,6 +1,6 @@
 FROM ubuntu:19.04
 
-ENV JMB_VERSION 0.2.4
+ENV JMB_VERSION 0.2.5
 
 RUN apt-get update && \
     apt-get install -y \
