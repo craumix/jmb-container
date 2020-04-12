@@ -1,9 +1,14 @@
-FROM alpine
+
+FROM ubuntu:19.10
 
 ENV JMB_VERSION 0.2.8
 
-RUN apk update && apk upgrade && \
-    apk --no-cache add openjdk11-jre-headless --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apt-get update && \
+    apt-get install -y \
+    openjdk-8-jre-headless && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir /jmb
 
 ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/JMusicBot-$JMB_VERSION-Linux.jar /jmb/JMusicBot.jar
 ADD https://github.com/jagrosh/MusicBot/releases/download/$JMB_VERSION/config.txt /jmb/config/config.txt
