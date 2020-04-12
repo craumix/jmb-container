@@ -1,4 +1,3 @@
-
 FROM ubuntu:19.10
 
 ENV JMB_VERSION 0.2.8
