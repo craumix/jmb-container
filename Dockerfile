@@ -1,6 +1,6 @@
-FROM ubuntu:19.10
+FROM ubuntu:20.10
 
-ENV JMB_VERSION 0.2.8
+ENV JMB_VERSION 0.2.9
 
 RUN apt-get update && \
     apt-get install -y \
