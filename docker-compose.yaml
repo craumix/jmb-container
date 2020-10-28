@@ -3,7 +3,7 @@ version: '2.2'
 services:
   jmusicbot:
     image: craumix/jmusicbot:latest
-    container_name: jmb
+    container_name: jmusicbot
     restart: unless-stopped
     volumes:
      - ./config:/jmb/config
