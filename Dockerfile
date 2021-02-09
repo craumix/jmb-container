@@ -1,6 +1,6 @@
 FROM ubuntu:20.10
 
-ENV JMB_VERSION 0.3.2
+ENV JMB_VERSION 0.3.3
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
