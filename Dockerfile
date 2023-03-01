@@ -1,4 +1,19 @@
 FROM openjdk:11-jre-slim
+LABEL maintainer="gian.klug@ict-scouts.ch"
+
+# Labels.
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.build-date=$BUILD_DATE
+LABEL org.label-schema.name="gianklug/jmusicbot"
+LABEL org.label-schema.description="jmusicbot docker container"
+LABEL org.label-schema.url="https://github.com/jagrosh/MusicBot"
+LABEL org.label-schema.vcs-url="https://github.com/gianklug/jmb-container"
+LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.version=$BUILD_VERSION
+LABEL org.label-schema.docker.cmd="docker run -v ./config:/jmb/config -d gianklug/jmusicbot"
+
+
+
 
 ENV JMB_VERSION 0.3.9
 
