@@ -1,6 +1,6 @@
 FROM openjdk:11-jre-slim
 
-ENV JMB_VERSION 0.3.9
+ENV JMB_VERSION 0.4.0
 
 #No downloadable example config since 0.2.10
 RUN mkdir -p /jmb/config
