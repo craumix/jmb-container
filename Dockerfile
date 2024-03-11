@@ -1,4 +1,22 @@
 FROM openjdk:11-jre-slim
+LABEL maintainer="craumix <soeren@guertler.net>"
+
+
+# Labels.
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.build-date=$BUILD_DATE
+LABEL org.label-schema.name="craumix/jmusicbot"
+LABEL org.label-schema.description="jmusicbot docker container"
+LABEL org.label-schema.url="https://github.com/jagrosh/MusicBot"
+LABEL org.label-schema.vcs-url="https://github.com/craumix/jmb-container"
+LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.version=$BUILD_VERSION
+LABEL org.label-schema.docker.cmd="docker run -v ./config:/jmb/config -d craumix/jmusicbot"
+
+
+
+
+
 
 ENV JMB_VERSION 0.4.0
 
