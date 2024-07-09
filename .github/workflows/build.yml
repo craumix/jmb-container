@@ -1,3 +1,5 @@
+name: Docker Image Build
+
 on: 
   workflow_dispatch:
     inputs:
@@ -27,7 +29,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
         push: true
-        build-args: VERSION=${{ inputs.version }}
+        build-args: |
+          BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          VCS_REF=$(git rev-parse --short HEAD)
+          VERSION=${{ inputs.version }}
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/jmusicbot:${{ inputs.version }}
           ${{ secrets.DOCKER_USERNAME }}/jmusicbot:latest
