@@ -22,6 +22,11 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Set environment variables
+      run: |
+        echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+        echo "VCS_REF=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        echo "VERSION=${{ inputs.version }}" >> $GITHUB_ENV
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
@@ -30,18 +35,9 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         build-args: |
-          BUILD_DATE=${{ steps.date.outputs.date }}
-          VCS_REF=${{ steps.vcs_ref.outputs.vcs_ref }}
-          VERSION=${{ inputs.version }}
+          BUILD_DATE=$BUILD_DATE
+          VCS_REF=$VCS_REF
+          VERSION=$VERSION
         tags: |
-          ${{ secrets.DOCKER_USERNAME }}/jmusicbot:${{ inputs.version }}
+          ${{ secrets.DOCKER_USERNAME }}/jmusicbot:$VERSION
           ${{ secrets.DOCKER_USERNAME }}/jmusicbot:latest
-
-    - name: Set BUILD_DATE
-      id: date
-      run: echo "::set-output name=date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-
-    - name: Set VCS_REF
-      id: vcs_ref
-      run: echo "::set-output name=vcs_ref::$(git rev-parse --short HEAD)"
-
