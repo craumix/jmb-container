@@ -27,7 +27,7 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
         push: true
-        args: VERSION=${{ inputs.version }}
+        build-args: VERSION=${{ inputs.version }}
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/jmusicbot:${{ inputs.version }}
           ${{ secrets.DOCKER_USERNAME }}/jmusicbot:latest
