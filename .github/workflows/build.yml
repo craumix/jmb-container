@@ -30,9 +30,18 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         build-args: |
-          BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          VCS_REF=$(git rev-parse --short HEAD)
+          BUILD_DATE=${{ steps.date.outputs.date }}
+          VCS_REF=${{ steps.vcs_ref.outputs.vcs_ref }}
           VERSION=${{ inputs.version }}
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/jmusicbot:${{ inputs.version }}
           ${{ secrets.DOCKER_USERNAME }}/jmusicbot:latest
+
+    - name: Set BUILD_DATE
+      id: date
+      run: echo "::set-output name=date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+    - name: Set VCS_REF
+      id: vcs_ref
+      run: echo "::set-output name=vcs_ref::$(git rev-parse --short HEAD)"
+
